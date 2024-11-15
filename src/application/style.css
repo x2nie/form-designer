@@ -53,6 +53,7 @@ h1 {
 .desktop {
   background: teal;
   flex-grow: 1;
+  position: relative;
 }
 
 /* @media (prefers-color-scheme: light) {
