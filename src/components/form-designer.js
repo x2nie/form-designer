@@ -1,7 +1,9 @@
 import { Component, xml } from "@odoo/owl";
+import TButton from "./TButton";
 
 export class FormDesigner extends Component {
     static template = 'FormDesigner'
+    static components = {TButton}
     static template0 = xml`
 <div class="window" style="width:300px; left:50px;">
   <div class="title-bar">

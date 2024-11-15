@@ -36,8 +36,9 @@
                     </div>
                 </fieldset>
                 <section class="field-row">
+                    <TButton caption="'hello !'" info="{left: 5, top: 0}" />
                     <button>Reset Alarm...</button>
-                    <label>Try this to get some attention</label>
+                    <!-- <label>Try this to get some attention</label> -->
                 </section>
             </article>
 
