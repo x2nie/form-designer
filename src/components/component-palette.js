@@ -1,7 +1,8 @@
 import { Component, xml } from "@odoo/owl";
 
 export default class ComponentPalette extends Component {
-    static template = xml`
+    static template = 'ComponentPalette'
+    static template0 = xml`
   
     <menu role="tablist">
       <!-- <li role="tab" aria-selected="true"><a href="#tabs">Desktop</a></li> -->

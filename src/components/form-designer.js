@@ -1,8 +1,9 @@
 import { Component, xml } from "@odoo/owl";
 
 export class FormDesigner extends Component {
-    static template = xml`
-    <div class="window" style="width: 300px">
+    static template = 'FormDesigner'
+    static template0 = xml`
+<div class="window" style="width:300px; left:50px;">
   <div class="title-bar">
     <div class="title-bar-text" contenteditable="true">A Window With Stuff In It</div>
     <div class="title-bar-controls">
