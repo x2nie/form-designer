@@ -9,7 +9,7 @@
         <li role="tab"><a href="#tabs">Data Access</a></li>
         <li role="tab"><a href="#tabs">Data Controls</a></li>
     </menu>
-    <div class="window" role="tabpanel">
+    <div role="tabpanel">
         <div class="window-body">
         <p>the tab content</p>
         </div>

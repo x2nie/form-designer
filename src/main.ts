@@ -3,7 +3,7 @@
 // import viteLogo from '/vite.svg'
 // import { setupCounter } from './counter.ts'
 import { loadFile, mount } from '@odoo/owl';
-import App from './App';
+import App from './application/App';
 
 
 // mount(App, document.getElementById('app')!);
