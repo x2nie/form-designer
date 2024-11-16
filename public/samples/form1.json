@@ -15,18 +15,18 @@
                 "Left": 10,
                 "Top": 10,
                 "Width": 100,
-                "Height": 50
+                "Height": 23
             },
             "children": []
         },
         {
             "object": "btnCancel","class":"TButton", 
             "properties": {
-                "Caption": "OK",
+                "Caption": "Cancel",
                 "Left": 150,
                 "Top": 10,
                 "Width": 100,
-                "Height": 50
+                "Height": 23
             },
             "children": []
         }

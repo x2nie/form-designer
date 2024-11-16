@@ -1,17 +1,19 @@
 import { Component, useRef, useState, xml } from "@odoo/owl"
-import { registerComponent, TComponent } from "./register";
+import { registerComponent } from "./register";
+import { TControl } from "./TControl";
 
-export default class TButton extends TComponent {
+export default class TButton extends TControl {
 
     setup() {
-        const info = this.props.info
-        this.att = useState({top: info.top, left: info.left})
+        super.setup()
+        // const info = this.props.info
+        // this.att = useState({top: info.top, left: info.left})
         // this.windowService = useWindowService();
         this.root = useRef('root');
         // onMounted(this.updateZIndex);
     }
 
-    startDragAndDrop(ev) {
+    startDragAndDrop0(ev) {
         // this.updateZIndex();
         const self = this;
         const root = this.root;
@@ -20,9 +22,9 @@ export default class TButton extends TComponent {
         el.classList.add('dragging');
     
         // const current = this.props.info;
-        const current = this.att;
-        const offsetX = current.left - ev.pageX;
-        const offsetY = current.top - ev.pageY;
+        const current = this.properties;
+        const offsetX = current.Left - ev.pageX;
+        const offsetY = current.Top - ev.pageY;
         let left, top;
     
         window.addEventListener("mousemove", moveWindow);
@@ -40,8 +42,8 @@ export default class TButton extends TComponent {
     
           if (top !== undefined && left !== undefined) {
             // self.windowService.updatePosition(current.id, left, top);
-            self.att.top = top;
-            self.att.left = left;
+            self.properties.top = top;
+            self.properties.left = left;
           }
         }
       }
@@ -49,9 +51,9 @@ export default class TButton extends TComponent {
 
 TButton.template = xml`
     <button t-ref="root" 
-        t-on-mousedown="startDragAndDrop"
-        t-attf-style="left: #{att.left}px; top:#{att.top}px"
-    ><t t-esc="props.caption"/></button>
-`
+        t-on-mousedown="startDragAndDrop" t-att-style="getStyle()"
+        ><t t-esc="properties.Caption"/></button>
+        <!-- t-attf-style="left: #{att.left}px; top:#{att.top}px" -->
+        `
 
 registerComponent(TButton)

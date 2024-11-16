@@ -1,7 +1,11 @@
 <templates>
     <t t-name="render-component">
-        <t t-component="getComponent(comp.class)" t-props="comp.properties">
-            <!-- <t t-foreach="comp.children" t-as="chi" -->
+        <t t-component="getComponent(comp.class)" t-props="comp">
+            <!-- <t t-foreach="comp.children" t-as="child" t-key="child.object">
+                <t t-call="render-component">
+                    <t t-set="comp" t-value="child"/>
+                </t>
+            </t> -->
         </t>
     </t>
 
@@ -11,8 +15,14 @@
         <t t-set="comp" t-value="seed"/>
     </t>
      <!-- <pre t-out="window.JSON.stringify(seed)"/> -->
+    <!-- <hr/> -->
+    <!-- <TPanel> -->
 
-    <div class="window active" style="max-width: 400px; left:400px">
+    <!-- </TPanel> -->
+    <!-- <TButton properties="{Width:100, Height:100, Caption:'HolaBut'}"/> -->
+    <!-- <hr/> -->
+
+    <div class="no-designer window active" style="max-width: 400px; left:400px">
         <div class="title-bar">
             <div class="title-bar-text">Another window with contents</div>
             <div class="title-bar-controls">

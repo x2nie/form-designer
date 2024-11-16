@@ -56,9 +56,16 @@ h1 {
   position: relative;
 }
 
-.desktop * {
+/* TForm */
+.desktop  * {
   position: relative;
   box-sizing: border-box;
+  overflow: hidden;
+}
+
+/* TComponent */
+.desktop > *:not(.loaded-icon):not(.no-designer) * {
+  position: absolute;
 }
 
 /* @media (prefers-color-scheme: light) {
