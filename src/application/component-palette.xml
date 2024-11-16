@@ -1,17 +1,18 @@
 <templates>
     <t t-name="ComponentPalette">
-    <menu role="tablist">
-        <!-- <li role="tab" aria-selected="true"><a href="#tabs">Desktop</a></li> -->
+    <!-- <menu role="tablist">
         <li role="tab" aria-selected="true"><a href="#tabs">Standard</a></li>
         <li role="tab"><a href="#tabs">Additional</a></li>
         <li role="tab"><a href="#tabs">Win32</a></li>
         <li role="tab"><a href="#tabs">System</a></li>
         <li role="tab"><a href="#tabs">Data Access</a></li>
         <li role="tab"><a href="#tabs">Data Controls</a></li>
-    </menu>
+    </menu> -->
     <div role="tabpanel">
-        <div class="window-body components-showroom">
-            <button t-on-click="generateTree">Tree ! </button>
+        <div class="window-body0 components-showroom">
+            <button class="component-item arrow" 
+                t-att-class="{active: state.activeComponent==null}"
+                t-on-click="generateTree"></button>
 
             <t t-foreach="compItems" t-as="item" t-key="item">
                 <button class="component-item"
@@ -21,7 +22,6 @@
                     t-att-class="{active: state.activeComponent==item}"
                     t-attf-style="--item-index: #{item_index}"
                 >
-                    <!-- <t t-out="item"/> -->
 
                 </button>
             </t>

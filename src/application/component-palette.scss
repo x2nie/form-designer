@@ -6,7 +6,9 @@
         max-width: 28px !important;
         min-height: 28px;
         overflow: hidden;
-        // border: 1px dashed fuchsia;
+        border-width: 1px;
+        border-style: outset;
+        border-color: transparent;
         // border-style: hidden;
         box-sizing: content-box;
         box-shadow: none;
@@ -14,7 +16,22 @@
         // display: inline-block;
         padding: 0;
         position: relative;
+        outline: none;
         --item-index: 0;
+
+        &:hover{
+            // border-style: outset;
+            border-color: unset;
+        }
+
+        &.active{
+            border-width: 1px;
+            border-color: unset;
+            border-style: inset;
+            box-shadow: none;
+            background-image: url(images/standard.png);
+            background-position: top right;
+        }
 
         &::before{
             content: '';
@@ -29,6 +46,13 @@
             background-position-y: -3px;
             background-position-x: calc(var(--item-index) * -28px - 45px - 3px);
             image-rendering: pixelated;
+        }
+    }
+    .arrow{
+        margin-right: 20px;
+        
+        &::before{
+            background-position-x: -2px;
         }
     }
 }

@@ -33,12 +33,14 @@ export class Cockpit extends Component {
     // static template = 'FormDesigner'
 Cockpit.template = xml`
 <div class="cockpit" style="">
-   Cockpit here <b t-out="state.activeComponent"/>
+   <!-- Cockpit here <b t-out="state.activeComponent"/> -->
    <ComponentPalette/>
+   <!-- 
     <button t-on-click="generateTree">Tree ! </button>
     <button t-on-click="switchComponent" data-component="Arrow" t-att-class="{active: state.activeComponent==null}">Arrow </button>
     <button t-on-click="switchComponent" data-component="TButton" t-att-class="{active: state.activeComponent=='TButton'}">TButton </button>
     <button t-on-click="switchComponent" data-component="TPanel" t-att-class="{active: state.activeComponent=='TPanel'}">TPanel </button>
+    --> 
 </div>
   
 `;
