@@ -4,7 +4,9 @@ import { TWinControl } from "./TControl";
 
 export class TPanel extends TWinControl {
     static template = xml`
-    <div class="panel"  t-att-style="getStyle()">
+    <div class="panel"  t-att-style="getStyle() +'overflow:scroll'"
+        t-on-mousedown="onMouseDown"
+    >
         <!-- <t t-out="window.JSON.stringify(props)"/> -->
         <!-- <t t-out="window.JSON.stringify(properties)"/> -->
         <t t-out="properties.Caption"/>

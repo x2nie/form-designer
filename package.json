@@ -19,7 +19,7 @@
   "dependencies": {
     "7.css": "^0.17.0",
     "98.css": "^0.1.20",
-    "@odoo/owl": "^2.2.10",
+    "@odoo/owl": "2.3.0",
     "lodash.debounce": "^4.0.8",
     "xp.css": "^0.2.6"
   }

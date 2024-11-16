@@ -9,6 +9,17 @@
     },
     "children": [
         {
+            "object": "pnl2","class":"TPanel", 
+            "properties": {
+                "Caption": "Sub Panel",
+                "Left": 10,
+                "Top": 20,
+                "Width": 100,
+                "Height": 230
+            },
+            "children": []
+        },
+        {
             "object": "btnOK","class":"TButton", 
             "properties": {
                 "Caption": "OK",

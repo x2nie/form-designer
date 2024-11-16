@@ -7,6 +7,8 @@ export class DesktopIcons extends Component {
     // static template = 'FormDesigner'
     static template = xml`
 
+    <div class="coba" style="left: 5px; bottom: 15px; width: 85px; position: absolute;"></div>
+
     <div class="loaded-icon" style="right: 5px; top: 15px; width: 85px; position: absolute;"><div class="desktop-icon" tabindex="0">
         <img src="images/icon/my-computer-32x32.png" style="width: 32px; height: 32px;"/>
     <div class="desktop-icon-title">My Computer</div></div></div>

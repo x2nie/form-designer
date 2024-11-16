@@ -19,6 +19,13 @@ export class TComponent extends Component {
         return registeredComponents[name]
     }
 
+    onMouseDown(ev){
+      console.log(this.env.designer.activeComponent)
+      if(this.env.designer.activeComponent){
+
+      } else this.startDragAndDrop(ev)
+    }
+
     startDragAndDrop(ev) {
         // this.updateZIndex();
         const self = this;

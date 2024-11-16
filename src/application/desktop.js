@@ -5,7 +5,7 @@ import { DesktopIcons } from "./desktop-icons";
 export class Desktop extends Component {
     static components = {FormDesigner, DesktopIcons}
     static template = xml`
-        <div class="desktop" style="">
+        <div class="desktop xp" style="">
 
             <DesktopIcons />
             <FormDesigner />

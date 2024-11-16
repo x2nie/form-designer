@@ -51,7 +51,7 @@ export default class TButton extends TControl {
 
 TButton.template = xml`
     <button t-ref="root" 
-        t-on-mousedown="startDragAndDrop" t-att-style="getStyle()"
+        t-on-mousedown="onMouseDown" t-att-style="getStyle()"
         ><t t-esc="properties.Caption"/></button>
         <!-- t-attf-style="left: #{att.left}px; top:#{att.top}px" -->
         `

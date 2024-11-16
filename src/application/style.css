@@ -57,14 +57,14 @@ h1 {
 }
 
 /* TForm */
-.desktop  * {
+.desktop  > * {
   position: relative;
   box-sizing: border-box;
   overflow: hidden;
 }
 
 /* TComponent */
-.desktop > *:not(.loaded-icon):not(.no-designer) * {
+.desktop > *:not(.loaded-icon):not(.no-designer):not(::before) * {
   position: absolute;
 }
 
