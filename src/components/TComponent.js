@@ -1,5 +1,7 @@
 import { Component, useState } from "@odoo/owl";
 import { registeredComponents } from "./register";
+// import { debounce } from "../utils";
+import debounce from 'lodash.debounce'
 
 export class TComponent extends Component {
     static components = registeredComponents
@@ -29,8 +31,9 @@ export class TComponent extends Component {
         const offsetX = current.Left - ev.pageX;
         const offsetY = current.Top - ev.pageY;
         let left, top;
-    
-        window.addEventListener("mousemove", moveWindow);
+        
+        const debounceMoveWindow = debounce(moveWindow, 0, {leading:true, trailing:true, maxWait: 10})
+        window.addEventListener("mousemove", debounceMoveWindow);
         window.addEventListener("mouseup", stopDnD, { once: true });
     
         function moveWindow(ev) {
@@ -40,7 +43,8 @@ export class TComponent extends Component {
           el.style.top = `${top}px`;
         }
         function stopDnD() {
-          window.removeEventListener("mousemove", moveWindow);
+        //   window.removeEventListener("mousemove", moveWindow);
+          window.removeEventListener("mousemove", debounceMoveWindow);
           el.classList.remove('dragging');
     
           if (top !== undefined && left !== undefined) {

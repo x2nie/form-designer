@@ -84,3 +84,7 @@ h1 {
 .panel {
   background: var(--3dcolor);
 }
+
+.dragging {
+  transition: none;
+}
