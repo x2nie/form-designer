@@ -2,8 +2,9 @@ import { Component, loadFile, onWillStart, useChildSubEnv, useState, useSubEnv, 
 
 import './style.css'
 // import '98.css/dist/98.css'
-import '7.css/dist/7.css'
+// import '7.css/dist/7.css'
 // import 'xp.css/dist/XP.css'
+import 'xp.css/dist/98.css'
 // import './desktop.scss'
 
 
@@ -45,7 +46,7 @@ export default class Application extends Component {
 }
 Application.template = xml`
     <Cockpit />
-    <t t-out="env.designer.activeComponent" />
-    <br/>
+    <!-- <t t-out="env.designer.activeComponent" /> -->
+    <!-- <br/> -->
     <Desktop />
 `;

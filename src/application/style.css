@@ -64,11 +64,25 @@ h1 {
 }
 
 /* TComponent */
+.panel {
+  background: var(--3dcolor);
+  /* background-image: radial-gradient(gray 1px, transparent 0);
+  background-size: 10px 10px;
+  background-position: -1px -1px; */
+}
 /* .desktop > *:not(.loaded-icon):not(.no-designer):not(::before) * {
   position: absolute;
 } */
+.root-designing-component, 
 .root-designing-component * {
   position: absolute;
+  user-select: none;
+}
+.root-designing-component{
+  background-color: var(--3dcolor);
+  background-image: radial-gradient(gray 1px, transparent 0);
+  background-size: 10px 10px;
+  background-position: -1px -1px;
 }
 /* @media (prefers-color-scheme: light) {
   :root {
@@ -83,9 +97,7 @@ h1 {
   }
 } */
 
-.panel {
-  background: var(--3dcolor);
-}
+
 
 .dragging {
   transition: none;
