@@ -23,6 +23,9 @@ export class TPanel extends TWinControl {
     setup(){
         super.setup()
         // debugger
+        if(!!this.props.designerroot){
+            this.env.designer.root = this;
+        }
     }
 }
 

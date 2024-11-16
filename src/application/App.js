@@ -11,11 +11,11 @@ import '7.css/dist/7.css'
 import { Cockpit } from "./cockpit";
 import { Desktop } from "./desktop";
 
-export default class App extends Component {
+export default class Application extends Component {
     static components = {Cockpit, Desktop}
     
 }
-App.template = xml`
+Application.template = xml`
     <Cockpit />
     <!-- <br/> -->
     <Desktop />

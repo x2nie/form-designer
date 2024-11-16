@@ -7,6 +7,7 @@ export class TComponent extends Component {
     static components = registeredComponents
     setup(){
         this.properties = useState({})
+        this.name = this.props.object;
         // debugger
         // convert props to state, we don't need props which is a seed.
         Object.entries(this.props.properties || {}).forEach(([key, value]) => {

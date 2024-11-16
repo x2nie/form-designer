@@ -3,7 +3,7 @@
 // import viteLogo from '/vite.svg'
 // import { setupCounter } from './counter.ts'
 import { loadFile, mount } from '@odoo/owl';
-import App from './application/App';
+import Application from './application/App';
 
 
 // mount(App, document.getElementById('app')!);
@@ -11,11 +11,14 @@ import App from './application/App';
 (async function setup() {
   const templates = await loadFile(`/owl_templates.xml`);
   const env = {
+    designer : {
+      root: null, //will be a form being designing
+    }
     // ui: createUI(),
     // _t: someTranslateFn,
     // templates,
     // possibly other stuff
   };
 
-  mount(App, document.getElementById('app')!, { env, templates, });
+  mount(Application, document.getElementById('app')!, { env, templates, });
 })();

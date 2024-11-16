@@ -11,9 +11,10 @@
 
 
 <t t-name="FormDesigner">
-    <t t-call="render-component">
+    <!-- <t t-call="render-component">
         <t t-set="comp" t-value="seed"/>
-    </t>
+    </t> -->
+    <t t-component="getComponent(seed.class)" t-props="seed" designerroot="1"></t>
      <!-- <pre t-out="window.JSON.stringify(seed)"/> -->
     <!-- <hr/> -->
     <!-- <TPanel> -->
