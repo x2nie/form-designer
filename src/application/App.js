@@ -10,7 +10,7 @@ import 'xp.css/dist/98.css'
 
 // import ComponentPalette from "../components/component-palette";
 // import { FormDesigner } from "../components/form-designer";
-import { Cockpit } from "./cockpit";
+import { Cockpit } from "./Cockpit";
 import { Desktop } from "./desktop";
 
 export default class Application extends Component {

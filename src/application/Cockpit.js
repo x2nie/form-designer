@@ -1,6 +1,8 @@
 import { Component, reactive, useEnv, useState, xml } from "@odoo/owl";
+import ComponentPalette from "./component-palette";
 
 export class Cockpit extends Component {
+    static components = { ComponentPalette}
     setup(){
         // this.env = useEnv()
         // this.state = useState(this.env.designer)
@@ -32,6 +34,7 @@ export class Cockpit extends Component {
 Cockpit.template = xml`
 <div class="cockpit" style="">
    Cockpit here <b t-out="state.activeComponent"/>
+   <ComponentPalette/>
     <button t-on-click="generateTree">Tree ! </button>
     <button t-on-click="switchComponent" data-component="Arrow" t-att-class="{active: state.activeComponent==null}">Arrow </button>
     <button t-on-click="switchComponent" data-component="TButton" t-att-class="{active: state.activeComponent=='TButton'}">TButton </button>
