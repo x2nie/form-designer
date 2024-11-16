@@ -5,7 +5,7 @@
                 <t t-call="render-component">
                     <t t-set="comp" t-value="child"/>
                 </t>
-                
+
             </t> -->
         </t>
     </t>
@@ -15,7 +15,8 @@
     <!-- <t t-call="render-component">
         <t t-set="comp" t-value="seed"/>
     </t> -->
-    <t t-component="getComponent(seed.class)" t-props="seed" designerroot="1"></t>
+    <!-- <t t-component="getComponent(state.seed.class)" t-props="state.seed" designerroot="1"></t> -->
+    <t t-component="getComponent(env.designer.seed.class)" t-props="env.designer.seed" designerroot="1"></t>
      <!-- <pre t-out="window.JSON.stringify(seed)"/> -->
     <!-- <hr/> -->
     <!-- <TPanel> -->

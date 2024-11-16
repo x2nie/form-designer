@@ -1,11 +1,13 @@
-import { xml } from "@odoo/owl";
+import { useRef, xml } from "@odoo/owl";
 import { registerComponent } from "./register";
 import { TWinControl } from "./TControl";
 
 export class TPanel extends TWinControl {
     static template = xml`
-    <div class="panel"  t-att-style="getStyle() +'overflow:scroll'"
-        t-on-mousedown="onMouseDown"
+    <div t-att-class="{panel:true, 'root-designing-component':props.designerroot}"  
+        t-att-style="getStyle() +'overflow:auto;border-width:1px; border-style:outset;'"
+        t-on-mousedown.stop="onMouseDown"
+        t-ref="root"
     >
         <!-- <t t-out="window.JSON.stringify(props)"/> -->
         <!-- <t t-out="window.JSON.stringify(properties)"/> -->
@@ -28,6 +30,7 @@ export class TPanel extends TWinControl {
         if(!!this.props.designerroot){
             this.env.designer.root = this;
         }
+        this.root = useRef('root')
     }
 }
 

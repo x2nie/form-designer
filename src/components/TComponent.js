@@ -2,6 +2,9 @@ import { Component, useState } from "@odoo/owl";
 import { registeredComponents } from "./register";
 // import { debounce } from "../utils";
 import debounce from 'lodash.debounce'
+import { TWinControl } from "./TControl";
+
+let guid = 0;
 
 export class TComponent extends Component {
     static components = registeredComponents
@@ -22,14 +25,24 @@ export class TComponent extends Component {
     onMouseDown(ev){
       console.log(this.env.designer.activeComponent)
       if(this.env.designer.activeComponent){
-
-      } else this.startDragAndDrop(ev)
+        const container = this instanceof TWinControl ? this : this.__owl__.parent.component;
+        // const node = this.env.designer.findObject(container.name)
+        container.props.children.push({
+        // node.children.push({
+          class: this.env.designer.activeComponent, object:`random${guid++}`, 
+          properties: {Left: ev.offsetX, Top: ev.offsetY, Width:100, Height: 43, Caption:'123'},
+          children:[]
+        })
+        this.env.designer.activeComponent = null;
+      } 
+      else this.startDragAndDrop(ev)
     }
 
     startDragAndDrop(ev) {
         // this.updateZIndex();
         const self = this;
         const root = this.root;
+        if(!root || !root.el) return;
     
         const el = root.el;
         el.classList.add('dragging');

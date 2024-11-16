@@ -64,10 +64,12 @@ h1 {
 }
 
 /* TComponent */
-.desktop > *:not(.loaded-icon):not(.no-designer):not(::before) * {
+/* .desktop > *:not(.loaded-icon):not(.no-designer):not(::before) * {
+  position: absolute;
+} */
+.root-designing-component * {
   position: absolute;
 }
-
 /* @media (prefers-color-scheme: light) {
   :root {
     color: #213547;

@@ -1,4 +1,4 @@
-import { Component, useChildSubEnv, useState, useSubEnv, xml } from "@odoo/owl";
+import { Component, loadFile, onWillStart, useChildSubEnv, useState, useSubEnv, xml } from "@odoo/owl";
 
 import './style.css'
 // import '98.css/dist/98.css'
@@ -18,10 +18,28 @@ export default class Application extends Component {
         const designer = useState({
             root: null, //will be a form being designing
             // activeComponent: 'TButton'
-            activeComponent: null
+            // seed: {},
+            // findObject: (name) => this.lookupObject(name, this.env.designer.seed),
+            // // activeComponent: null
+            // activeComponent: 'TPanel'
         })
         // useChildSubEnv({designer})
+        onWillStart(async ()=>{
+            const res = await loadFile('/samples/form1.json')
+            designer.seed = JSON.parse(res)
+        })
         useSubEnv({designer})
+    }
+
+    lookupObject(name, rootObject){
+        if(rootObject.object == name)
+            return rootObject;
+        for(const child of rootObject.children){
+            // if(child.object == name)
+            //     return child;
+            let result = this.lookupObject(name, child)
+            if(result) return result
+        }
     }
     
 }

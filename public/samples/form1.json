@@ -13,7 +13,7 @@
             "properties": {
                 "Caption": "Sub Panel",
                 "Left": 10,
-                "Top": 20,
+                "Top": 40,
                 "Width": 100,
                 "Height": 230
             },
