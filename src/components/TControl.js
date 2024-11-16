@@ -1,14 +1,14 @@
-import { Component, useRef, useState, xml } from "@odoo/owl"
-import { registerComponent, TComponent } from "./register";
+import { TComponent } from "./register";
 
-export default class TButton extends TComponent {
+export class TControl extends TComponent {
 
-    setup() {
-        const info = this.props.info
-        this.att = useState({top: info.top, left: info.left})
-        // this.windowService = useWindowService();
-        this.root = useRef('root');
-        // onMounted(this.updateZIndex);
+
+    getStyle(){
+      let style=''
+      'Left Top Width Height'.split(' ').forEach(att =>{
+        style += `${att.toLowerCase()}:${this.properties[att]}px; `
+      })
+      return style;
     }
 
     startDragAndDrop(ev) {
@@ -44,14 +44,8 @@ export default class TButton extends TComponent {
             self.att.left = left;
           }
         }
-      }
+    }
 }
 
-TButton.template = xml`
-    <button t-ref="root" 
-        t-on-mousedown="startDragAndDrop"
-        t-attf-style="left: #{att.left}px; top:#{att.top}px"
-    ><t t-esc="props.caption"/></button>
-`
 
-registerComponent(TButton)
+export class TWinControl extends TControl {}

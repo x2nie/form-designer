@@ -56,6 +56,11 @@ h1 {
   position: relative;
 }
 
+.desktop * {
+  position: relative;
+  box-sizing: border-box;
+}
+
 /* @media (prefers-color-scheme: light) {
   :root {
     color: #213547;
@@ -69,3 +74,6 @@ h1 {
   }
 } */
 
+.panel {
+  background: var(--3dcolor);
+}

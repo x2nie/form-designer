@@ -1,10 +1,36 @@
-import { Component, xml } from "@odoo/owl";
+import { Component, loadFile, onWillStart, xml } from "@odoo/owl";
 import TButton from "./TButton";
+import { registeredComponents } from "./register";
+
+import './package1' //load all registerd
 
 export class FormDesigner extends Component {
     static template = 'FormDesigner'
-    static components = {TButton}
-    static template0 = xml`
+    static components = registeredComponents;
+    setup(){
+      onWillStart(async ()=>{
+        const res = await loadFile('/samples/form1.json')
+        this.seed = JSON.parse(res)
+      })
+    }
+
+    getComponent(name) {
+      return this.constructor.components[name]
+    }
+
+}
+
+
+
+
+
+
+
+
+
+
+
+FormDesigner.template0 = xml`
 <div class="window" style="width:300px; left:50px;">
   <div class="title-bar">
     <div class="title-bar-text" contenteditable="true">A Window With Stuff In It</div>
@@ -20,5 +46,3 @@ export class FormDesigner extends Component {
 </div>
   
 `;
-
-}
