@@ -23,9 +23,9 @@ export class Cockpit extends Component {
         const compName = ev.target.getAttribute('data-component')
         console.log('change to:', compName)
         if(compName.startsWith('T')){
-            this.state.activeComponent = compName
+            this.state.pickedComponent = compName
         } else {
-            this.state.activeComponent = null
+            this.state.pickedComponent = null
         }
     }
 
@@ -33,13 +33,13 @@ export class Cockpit extends Component {
     // static template = 'FormDesigner'
 Cockpit.template = xml`
 <div class="cockpit" style="">
-   <!-- Cockpit here <b t-out="state.activeComponent"/> -->
+   <!-- Cockpit here <b t-out="state.pickedComponent"/> -->
    <ComponentPalette/>
    <!-- 
     <button t-on-click="generateTree">Tree ! </button>
-    <button t-on-click="switchComponent" data-component="Arrow" t-att-class="{active: state.activeComponent==null}">Arrow </button>
-    <button t-on-click="switchComponent" data-component="TButton" t-att-class="{active: state.activeComponent=='TButton'}">TButton </button>
-    <button t-on-click="switchComponent" data-component="TPanel" t-att-class="{active: state.activeComponent=='TPanel'}">TPanel </button>
+    <button t-on-click="switchComponent" data-component="Arrow" t-att-class="{active: state.pickedComponent==null}">Arrow </button>
+    <button t-on-click="switchComponent" data-component="TButton" t-att-class="{active: state.pickedComponent=='TButton'}">TButton </button>
+    <button t-on-click="switchComponent" data-component="TPanel" t-att-class="{active: state.pickedComponent=='TPanel'}">TPanel </button>
     --> 
 </div>
   

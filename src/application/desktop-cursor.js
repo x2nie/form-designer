@@ -5,11 +5,11 @@ import debounce from 'lodash.debounce'
 export default class DesktopCursor extends Component {
     static template = xml`
         <div class="component-cursor"
-            t-if="state.activeComponent != null" 
+            t-if="state.pickedComponent != null" 
             t-attf-style="left:#{mouse.x}px; top:#{mouse.y}px"
         >
             <div class="component-icon" style="--item-index:2;"/>
-            <!-- <t t-out="window.JSON.stringify(env.designer.activeComponent)" /> -->
+            <!-- <t t-out="window.JSON.stringify(env.designer.pickedComponent)" /> -->
         </div>
     `
     setup() {
@@ -20,7 +20,7 @@ export default class DesktopCursor extends Component {
             (active)=>{
                 document.body.style.cursor = active? 'none': 'default';
             },
-            () => [this.state.activeComponent != null]
+            () => [this.state.pickedComponent != null]
         )
 
         // this hooks is bound to the 'mouse' property.

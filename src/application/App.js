@@ -18,11 +18,11 @@ export default class Application extends Component {
     setup(){
         const designer = useState({
             root: null, //will be a form being designing
-            // activeComponent: 'TButton'
+            // pickedComponent: 'TButton'
             // seed: {},
             // findObject: (name) => this.lookupObject(name, this.env.designer.seed),
-            // // activeComponent: null
-            // activeComponent: 'TPanel'
+            // // pickedComponent: null
+            // pickedComponent: 'TPanel'
         })
         // useChildSubEnv({designer})
         onWillStart(async ()=>{
@@ -46,7 +46,7 @@ export default class Application extends Component {
 }
 Application.template = xml`
     <Cockpit />
-    <!-- <t t-out="env.designer.activeComponent" /> -->
+    <!-- <t t-out="env.designer.pickedComponent" /> -->
     <!-- <br/> -->
     <Desktop />
 `;

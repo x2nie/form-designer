@@ -30,9 +30,9 @@ export default class ComponentPalette extends Component {
         const compName = ev.target.getAttribute('data-component')
         console.log('change to:', compName)
         if(compName.startsWith('T')){
-            this.state.activeComponent = compName
+            this.state.pickedComponent = compName
         } else {
-            this.state.activeComponent = null
+            this.state.pickedComponent = null
         }
     }
 

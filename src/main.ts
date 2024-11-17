@@ -13,7 +13,7 @@ import Application from './application/App';
   const env = {
     // designer : reactive({
     //   root: null, //will be a form being designing
-    //   activeComponent: 'TButton'
+    //   pickedComponent: 'TButton'
     // })
     // ui: createUI(),
     // _t: someTranslateFn,

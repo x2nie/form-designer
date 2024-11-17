@@ -23,17 +23,17 @@ export class TComponent extends Component {
     }
 
     onMouseDown(ev){
-      console.log(this.env.designer.activeComponent)
-      if(this.env.designer.activeComponent){
+      console.log(this.env.designer.pickedComponent)
+      if(this.env.designer.pickedComponent){
         const container = this instanceof TWinControl ? this : this.__owl__.parent.component;
         // const node = this.env.designer.findObject(container.name)
         container.props.children.push({
         // node.children.push({
-          class: this.env.designer.activeComponent, object:`random${guid++}`, 
+          class: this.env.designer.pickedComponent, object:`random${guid++}`, 
           properties: {Left: ev.offsetX, Top: ev.offsetY, Width:100, Height: 43, Caption:'123'},
           children:[]
         })
-        this.env.designer.activeComponent = null;
+        this.env.designer.pickedComponent = null;
       } 
       else this.startDragAndDrop(ev)
     }

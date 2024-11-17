@@ -12,7 +12,7 @@
         <div class="window-body0 components-showroom">
             <button class="component-icon arrow" 
                 data-component="null" 
-                t-att-class="{active: state.activeComponent==null}"
+                t-att-class="{active: state.pickedComponent==null}"
                 t-on-click="switchComponent"></button>
 
             <t t-foreach="compItems" t-as="item" t-key="item">
@@ -20,7 +20,7 @@
                     t-on-click="switchComponent" 
                     t-att-data-component="item" 
                     t-att-title="item" 
-                    t-att-class="{active: state.activeComponent==item}"
+                    t-att-class="{active: state.pickedComponent==item}"
                     t-attf-style="--item-index: #{item_index}"
                 >
 
