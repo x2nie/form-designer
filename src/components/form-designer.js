@@ -1,5 +1,4 @@
 import { Component, loadFile, onWillStart, xml } from "@odoo/owl";
-import TButton from "./TButton";
 import { registeredComponents } from "./register";
 
 import './package1' //load all registerd

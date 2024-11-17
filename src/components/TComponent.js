@@ -21,6 +21,7 @@ export class TComponent extends Component {
         //     this.properties[key] = value;
         // });
         this.root = useRef('root');
+        this.mover = useRef('root');
         if(!!this.props.designerroot){
           this.env.designer.root = this;
         }
@@ -44,22 +45,27 @@ export class TComponent extends Component {
     }
 
     onMouseDown(ev){
-      console.log(this.env.designer.pickedComponent)
-      if(this.env.designer.pickedComponent){
-        const container = this instanceof TWinControl ? this : this.__owl__.parent.component;
-        // const node = this.env.designer.findObject(container.name)
-        container.props.children.push({
+      
+      if(this.env.designer.pickedComponent)
+        this.mousePlacingComponent(ev);
+      else 
+        this.startMoveComponent(ev)
+    }
+
+    mousePlacingComponent(ev){
+      const container = this instanceof TWinControl ? this : this.__owl__.parent.component;
+      // const node = this.env.designer.findObject(container.name)
+      container.props.children.push({
         // node.children.push({
           class: this.env.designer.pickedComponent, object:`random${guid++}`, 
           properties: {Left: ev.offsetX, Top: ev.offsetY, Width:100, Height: 43, Caption:'123'},
           children:[]
         })
         this.env.designer.pickedComponent = null;
-      } 
-      else this.startMoveComponent(ev)
     }
-
+      
     startMoveComponent(ev) {
+        if(ev.target != this.mover.el) return;
         // this.updateZIndex();
         const self = this;
         const root = this.root;

@@ -25,6 +25,12 @@
     <!-- <TButton properties="{Width:100, Height:100, Caption:'HolaBut'}"/> -->
     <!-- <hr/> -->
 
+    <t t-call="FormDesigner.sample-form"/>
+</t>
+
+<t t-name="FormDesigner.sample-form">
+    
+
     <div class="no-designer window active" style="max-width: 400px; left:400px">
         <div class="title-bar">
             <div class="title-bar-text">Another window with contents</div>

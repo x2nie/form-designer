@@ -1,5 +1,5 @@
 {
-    "object": "Form1","class":"TPanel", 
+    "object": "Form1","class":"TForm", 
     "properties": {
         "Caption": "Form 1",
         "Left": 10,

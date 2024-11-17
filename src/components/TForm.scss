@@ -1,0 +1,11 @@
+.TForm {
+    display: flex;
+    flex-direction: column;
+    > * {
+        position: relative;
+    }
+    .window-body {
+        flex-grow: 1;
+        margin: 0;
+    }
+}
