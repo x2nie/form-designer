@@ -11,17 +11,20 @@ export class TComponent extends Component {
     static components = registeredComponents
     static tag = 'div'
     setup(){
-        this.properties = useState({})
+        this.properties = useState({...this.props.properties})
         this.name = this.props.object;
         // debugger
         // convert props to state, we don't need props which is a seed.
-        Object.entries(this.props.properties || {}).forEach(([key, value]) => {
-            this.properties[key] = value;
-        });
+        // Object.entries(this.props.properties || {}).forEach(([key, value]) => {
+        //     this.properties[key] = value;
+        // });
         this.root = useRef('root');
+        if(!!this.props.designerroot){
+          this.env.designer.root = this;
+        }
     }
     getComponent(name) {
-        return registeredComponents[name]
+        return registeredComponents[name] || UnknownTComponent
     }
 
     getStyle(){
@@ -30,6 +33,12 @@ export class TComponent extends Component {
         style += `${att.toLowerCase()}:${this.properties[att]}px; `
       })
       return style;
+    }
+    
+    getCssClass(){
+      return {
+        'root-designing-component': this.props.designerroot,
+      }
     }
 
     onMouseDown(ev){
@@ -45,10 +54,10 @@ export class TComponent extends Component {
         })
         this.env.designer.pickedComponent = null;
       } 
-      else this.startDragAndDrop(ev)
+      else this.startMoveComponent(ev)
     }
 
-    startDragAndDrop(ev) {
+    startMoveComponent(ev) {
         // this.updateZIndex();
         const self = this;
         const root = this.root;
@@ -87,4 +96,8 @@ export class TComponent extends Component {
     }
 }
 
-registerComponent(TComponent)
+export class UnknownTComponent extends TComponent {
+  static template = 'TComponent.Iconic'
+}
+
+registerComponent(UnknownTComponent)

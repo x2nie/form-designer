@@ -1,7 +1,8 @@
 <templates>
 
+    <!-- t-att-class="{panel:false, 'root-designing-component':props.designerroot}"   -->
     <t t-name="TComponent" t-tag="constructor.tag"
-        t-att-class="{panel:false, 'root-designing-component':props.designerroot}"  
+        t-att-class="getCssClass()"
         t-att-style="getStyle() +'overflow:auto;border-width:1px; border-style:outset;'"
         t-on-mousedown.stop="onMouseDown"
         t-ref="root"
@@ -21,20 +22,16 @@
         </t>
     </t>
 
-    <t t-name="TComponent.Iconic">
-        <TComponent>
-            <t t-set-slot="content">
-                <!-- Hllo -->
-                <t t-out="properties.Caption"/>
-            </t>
-        </TComponent>
+    <t t-name="TComponent.Iconic" t-call="TComponent">
+        <t t-out="properties.Caption"/>
     </t>
-    <t t-name="TButton">
-        <t t-call="TComponent">
+    
+    <t t-name="TButton" t-call="TComponent">
+        <!-- <t t-call="TComponent"> -->
             <!-- <t t-set-slot="content"> -->
                 <!-- Hllo -->
                 <t t-out="properties.Caption"/>
             <!-- </t> -->
-        </t>
+        <!-- </t> -->
     </t>
 </templates>
