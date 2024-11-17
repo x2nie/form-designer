@@ -8,7 +8,7 @@ export default class DesktopCursor extends Component {
             t-if="state.pickedComponent != null" 
             t-attf-style="left:#{mouse.x}px; top:#{mouse.y}px"
         >
-            <div class="component-icon" style="--item-index:2;"/>
+            <div class="component-icon" style="--item-index:8;"/>
             <!-- <t t-out="window.JSON.stringify(env.designer.pickedComponent)" /> -->
         </div>
     `

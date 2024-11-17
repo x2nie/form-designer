@@ -21,3 +21,19 @@
         background: var(--3dcolor);
     }
 }
+
+.root-designing-component{
+
+    //? drawing the size of pickedComponent to set a custom size
+    &.dragging::before{
+        content: '';
+        z-index: 1000;
+        position: absolute;
+        top: var(--vir-top);
+        left: var(--vir-left);
+        width: var(--vir-width);
+        height: var(--vir-height);
+        border: 1px dashed black;
+        pointer-events: none;
+    }
+}
