@@ -4,6 +4,8 @@ import { registerComponent, registeredComponents } from "./register";
 import debounce from 'lodash.debounce'
 import { TWinControl } from "./TControl";
 
+import './TComponent.scss'
+
 let guid = 0;
 
 export class TComponent extends Component {
@@ -98,6 +100,10 @@ export class TComponent extends Component {
 
 export class UnknownTComponent extends TComponent {
   static template = 'TComponent.Iconic'
+
+  getCssClass(){
+    return {...super.getCssClass(), iconic:true}
+  }
 }
 
 registerComponent(UnknownTComponent)

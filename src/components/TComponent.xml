@@ -3,11 +3,11 @@
     <!-- t-att-class="{panel:false, 'root-designing-component':props.designerroot}"   -->
     <t t-name="TComponent" t-tag="constructor.tag"
         t-att-class="getCssClass()"
-        t-att-style="getStyle() +'overflow:auto;border-width:1px; border-style:outset;'"
+        t-att-style="getStyle() +''"
         t-on-mousedown.stop="onMouseDown"
         t-ref="root"
     >
-        <t t-slot="content"/>
+        <t t-slot="default"/>
         <t t-raw="0"/>
         <!-- <t t-out="properties.Caption"/> -->
          
@@ -23,7 +23,7 @@
     </t>
 
     <t t-name="TComponent.Iconic" t-call="TComponent">
-        <t t-out="properties.Caption"/>
+        <span class="component-iconic-label" t-out="properties.Caption or name"/>
     </t>
     
     <t t-name="TButton" t-call="TComponent">

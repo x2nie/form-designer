@@ -1,0 +1,23 @@
+
+
+.panel {
+    overflow:auto;border-width:1px; border-style:outset;
+    // background: var(--3dcolor);
+}
+
+
+.iconic{
+    overflow: visible;
+    border-width:1px;
+    border-style:outset;
+    background: var(--3dcolor);
+
+    .component-iconic-label{
+        max-width: 120px;
+        min-width: 60px;
+        text-align: center;
+        bottom: -20px;
+        transform: translateX(-50%) translateX(16px);
+        background: var(--3dcolor);
+    }
+}

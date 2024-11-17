@@ -17,7 +17,19 @@
                 "Width": 100,
                 "Height": 230
             },
-            "children": []
+            "children": [
+                {
+                    "object": "unknown1","class":"TUnknownPanel", 
+                    "properties": {
+                        "UnknownProp1": "Custom Data",
+                        "Left": 10,
+                        "Top": 40,
+                        "Width": 100,
+                        "Height": 230
+                    },
+                    "children": []
+                }
+            ]
         },
         {
             "object": "btnOK","class":"TButton", 
@@ -38,6 +50,17 @@
                 "Top": 10,
                 "Width": 100,
                 "Height": 23
+            },
+            "children": []
+        },
+        {
+            "object": "customerdata","class":"TListbox", 
+            "properties": {
+                "UnknownProp1": "Custom Data",
+                "Left": 150,
+                "Top": 40,
+                "Width": 100,
+                "Height": 230
             },
             "children": []
         }
