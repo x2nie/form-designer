@@ -4,8 +4,8 @@ export class TControl extends TComponent {
 
 
     getStyle(){
-      let style=''
-      'Left Top Width Height'.split(' ').forEach(att =>{
+      let style= super.getStyle()
+      'Width Height'.split(' ').forEach(att =>{
         style += `${att.toLowerCase()}:${this.properties[att]}px; `
       })
       return style;

@@ -1,5 +1,5 @@
-import { Component, useState } from "@odoo/owl";
-import { registeredComponents } from "./register";
+import { Component, useRef, useState } from "@odoo/owl";
+import { registerComponent, registeredComponents } from "./register";
 // import { debounce } from "../utils";
 import debounce from 'lodash.debounce'
 import { TWinControl } from "./TControl";
@@ -7,7 +7,9 @@ import { TWinControl } from "./TControl";
 let guid = 0;
 
 export class TComponent extends Component {
+    static template = "TComponent"
     static components = registeredComponents
+    static tag = 'div'
     setup(){
         this.properties = useState({})
         this.name = this.props.object;
@@ -16,10 +18,18 @@ export class TComponent extends Component {
         Object.entries(this.props.properties || {}).forEach(([key, value]) => {
             this.properties[key] = value;
         });
-
+        this.root = useRef('root');
     }
     getComponent(name) {
         return registeredComponents[name]
+    }
+
+    getStyle(){
+      let style='width:32px; height:32px;'
+      'Left Top'.split(' ').forEach(att =>{
+        style += `${att.toLowerCase()}:${this.properties[att]}px; `
+      })
+      return style;
     }
 
     onMouseDown(ev){
@@ -76,3 +86,5 @@ export class TComponent extends Component {
         }
     }
 }
+
+registerComponent(TComponent)

@@ -3,13 +3,14 @@ import { registerComponent } from "./register";
 import { TControl } from "./TControl";
 
 export default class TButton extends TControl {
+  static tag = 'button'
 
     setup() {
         super.setup()
         // const info = this.props.info
         // this.att = useState({top: info.top, left: info.left})
         // this.windowService = useWindowService();
-        this.root = useRef('root');
+        // this.root = useRef('root');
         // onMounted(this.updateZIndex);
     }
 
@@ -49,7 +50,9 @@ export default class TButton extends TControl {
       }
 }
 
-TButton.template = xml`
+// TButton.template = "TComponent.Iconic"
+TButton.template = "TButton"
+TButton.template0 = xml`
     <button t-ref="root" 
         t-on-mousedown.stop="onMouseDown" t-att-style="getStyle()"
         ><t t-esc="properties.Caption"/></button>

@@ -1,0 +1,40 @@
+<templates>
+
+    <t t-name="TComponent" t-tag="constructor.tag"
+        t-att-class="{panel:false, 'root-designing-component':props.designerroot}"  
+        t-att-style="getStyle() +'overflow:auto;border-width:1px; border-style:outset;'"
+        t-on-mousedown.stop="onMouseDown"
+        t-ref="root"
+    >
+        <t t-slot="content"/>
+        <t t-raw="0"/>
+        <!-- <t t-out="properties.Caption"/> -->
+         
+        <!-- <t t-slot="default"/> -->
+        <t t-foreach="props.children or []" t-as="child" t-key="child.object">
+            <!-- <hr/> -->
+            <!-- <div t-out="window.JSON.stringify(child)"/> -->
+            <t t-component="getComponent(child.class)" t-props="child"/>
+            <!-- <t t-call="render-component">
+                <t t-set="comp" t-value="child"/>
+            </t> --> 
+        </t>
+    </t>
+
+    <t t-name="TComponent.Iconic">
+        <TComponent>
+            <t t-set-slot="content">
+                <!-- Hllo -->
+                <t t-out="properties.Caption"/>
+            </t>
+        </TComponent>
+    </t>
+    <t t-name="TButton">
+        <t t-call="TComponent">
+            <!-- <t t-set-slot="content"> -->
+                <!-- Hllo -->
+                <t t-out="properties.Caption"/>
+            <!-- </t> -->
+        </t>
+    </t>
+</templates>
