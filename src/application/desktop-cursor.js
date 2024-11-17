@@ -1,4 +1,5 @@
 import { Component, onWillDestroy, useEffect, useEnv, useState, xml } from "@odoo/owl";
+import debounce from 'lodash.debounce'
 
 
 export default class DesktopCursor extends Component {
@@ -40,9 +41,10 @@ function useMouse() {
       position.x = e.clientX;
       position.y = e.clientY;
     }
-    window.addEventListener('mousemove', update);
+    const debounceMouseMove = debounce(update, 0, {leading:true, trailing:true, maxWait: 10})
+    window.addEventListener('mousemove', debounceMouseMove);
     onWillDestroy(() => {
-        window.removeEventListener('mousemove', update);
+        window.removeEventListener('mousemove', debounceMouseMove);
     });
 
     return position;
