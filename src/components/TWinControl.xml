@@ -1,0 +1,8 @@
+<templates>
+
+    <t t-name="TWinControl" t-call="TComponent">
+        <t t-raw="0"/>
+        <t t-call="TComponent.children"/>
+    </t>
+
+</templates>

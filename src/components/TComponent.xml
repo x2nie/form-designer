@@ -12,13 +12,11 @@
         <!-- <t t-out="properties.Caption"/> -->
          
         <!-- <t t-slot="default"/> -->
+    </t>
+
+    <t t-name="TComponent.children" >
         <t t-foreach="props.children or []" t-as="child" t-key="child.object">
-            <!-- <hr/> -->
-            <!-- <div t-out="window.JSON.stringify(child)"/> -->
             <t t-component="getComponent(child.class)" t-props="child"/>
-            <!-- <t t-call="render-component">
-                <t t-set="comp" t-value="child"/>
-            </t> --> 
         </t>
     </t>
 

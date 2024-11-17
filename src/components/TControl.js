@@ -15,4 +15,6 @@ export class TControl extends TComponent {
 }
 
 
-export class TWinControl extends TControl {}
+export class TWinControl extends TControl {
+  static template = "TWinControl"
+}
