@@ -11,8 +11,9 @@
     <div role="tabpanel">
         <div class="window-body0 components-showroom">
             <button class="component-icon arrow" 
+                data-component="null" 
                 t-att-class="{active: state.activeComponent==null}"
-                t-on-click="generateTree"></button>
+                t-on-click="switchComponent"></button>
 
             <t t-foreach="compItems" t-as="item" t-key="item">
                 <button class="component-icon"

@@ -4,7 +4,6 @@ import debounce from 'lodash.debounce'
 
 export default class DesktopCursor extends Component {
     static template = xml`
-    <t>
         <div class="component-cursor"
             t-if="state.activeComponent != null" 
             t-attf-style="left:#{mouse.x}px; top:#{mouse.y}px"
@@ -12,7 +11,6 @@ export default class DesktopCursor extends Component {
             <div class="component-icon" style="--item-index:2;"/>
             <!-- <t t-out="window.JSON.stringify(env.designer.activeComponent)" /> -->
         </div>
-    </t>
     `
     setup() {
         this.env = useEnv()
