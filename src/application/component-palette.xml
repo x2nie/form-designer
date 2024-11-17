@@ -10,12 +10,12 @@
     </menu> -->
     <div role="tabpanel">
         <div class="window-body0 components-showroom">
-            <button class="component-item arrow" 
+            <button class="component-icon arrow" 
                 t-att-class="{active: state.activeComponent==null}"
                 t-on-click="generateTree"></button>
 
             <t t-foreach="compItems" t-as="item" t-key="item">
-                <button class="component-item"
+                <button class="component-icon"
                     t-on-click="switchComponent" 
                     t-att-data-component="item" 
                     t-att-title="item" 

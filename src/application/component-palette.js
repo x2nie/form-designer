@@ -16,6 +16,7 @@ export default class ComponentPalette extends Component {
         // this.state = this.env.designer
         this.env = useEnv()
         this.state = useState(this.env.designer)
+        this.state.shown_component
     }
 
     // generateTree(){
