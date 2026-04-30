@@ -52,7 +52,7 @@ export class TComponent extends Component {
       this.startMoveComponent(ev)
   }
   
-  mousePlacingComponent(ev) {
+  /*mousePlacingComponent(ev) {
     // this.startPlacingComponent(ev)
     const container = this instanceof TWinControl ? this : this.__owl__.parent.component;
     // const node = this.env.designer.findObject(container.name)
@@ -63,7 +63,7 @@ export class TComponent extends Component {
       children: []
     })
     this.env.designer.pickedComponent = null;
-  }
+  }*/
 
   placingComponent(pos) {
     const container = this instanceof TWinControl ? this : this.__owl__.parent.component;
@@ -90,7 +90,7 @@ export class TComponent extends Component {
     const rdc_abs_y = rdc_rect.top + ( window.scrollX || document.documentElement.scrollLeft)
     const rdc_left = ev.pageX - rdc_abs_x
     const rdc_top = ev.pageY - rdc_abs_y
-    let rdc_width, rdc_height;
+    let rdc_width, rdc_height, rdc_x2, rdc_y2;
     rdc.style.setProperty('--vir-left', `${rdc_left}px`)
     rdc.style.setProperty('--vir-top', `${rdc_top}px`)
 
@@ -123,8 +123,8 @@ export class TComponent extends Component {
       // left = Math.max(offsetX + ev.pageX, 0);
       // top = Math.max(offsetY + ev.pageY, 0);
 
-      const nowX = ev.pageX - rdc_abs_x;
-      const nowY = ev.pageY - rdc_abs_y;
+      const nowX = rdc_x2 = ev.pageX - rdc_abs_x;
+      const nowY = rdc_y2 = ev.pageY - rdc_abs_y;
 
       rdc_width = Math.abs(nowX - rdc_left);
       rdc_height = Math.abs(nowY - rdc_top);
@@ -144,10 +144,12 @@ export class TComponent extends Component {
       window.removeEventListener("mousemove", debounceMoveWindow);
       rdc.classList.remove('dragging');
 
-      const left = Math.min(put_x1, put_x2)
-      const top = Math.min(put_y1, put_y2)
+      // const left = Math.min(put_x1, put_x2)
+      // const top = Math.min(put_y1, put_y2)
       // let width = Math.max(put_x1, put_x2) - left;
       // let height = Math.max(put_y1, put_y2) - top;
+      const left = rdc_left < rdc_x2 ? put_x1 : put_x1 - rdc_width;
+      const top = rdc_top < rdc_y2 ? put_y1 : put_y1 - rdc_height;
       self.placingComponent({left, top, width:rdc_width, height:rdc_height})
     }
   }
