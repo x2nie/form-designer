@@ -18,6 +18,8 @@ export default class Application extends Component {
     setup(){
         const designer = useState({
             root: null, //will be a form being designing
+            gridX: 10,
+            gridY: 10,
             // pickedComponent: 'TButton'
             // seed: {},
             // findObject: (name) => this.lookupObject(name, this.env.designer.seed),

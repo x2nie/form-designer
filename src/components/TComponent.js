@@ -2,7 +2,7 @@ import { Component, useRef, useState } from "@odoo/owl";
 import { registerComponent, registeredComponents } from "./register";
 // import { debounce } from "../utils";
 import debounce from 'lodash.debounce'
-import { TWinControl } from "./TControl";
+import { TWinControl, TControl } from "./TControl";
 
 import './TComponent.scss'
 
@@ -65,8 +65,8 @@ export class TComponent extends Component {
     this.env.designer.pickedComponent = null;
   }*/
 
-  placingComponent(pos) {
-    const container = this instanceof TWinControl ? this : this.__owl__.parent.component;
+  placingComponent(pos, container=null) {
+    container = container || (this instanceof TWinControl ? this : this.__owl__.parent.component);
     // const node = this.env.designer.findObject(container.name)
     container.props.children.push({
       // node.children.push({
@@ -81,6 +81,17 @@ export class TComponent extends Component {
     this.env.designer.pickedComponent = null;
   }
 
+  isDroppingNonControl(x,y){
+    // this function is used to reject startPlacingComponent, because can not set width/height on non tcontrol
+    const pickedComponentName = this.env.designer.pickedComponent;
+    const pickedComponentClass = registeredComponents[pickedComponentName];
+    if(pickedComponentClass && pickedComponentClass.prototype instanceof TControl) {
+      return false;
+    }
+    this.placingComponent({left: x, top: y}, this.env.designer.root)
+    return true;
+  }
+
   startPlacingComponent(ev) {
     // if (ev.target != this.mover.el) return;
     const target = ev.target;
@@ -90,6 +101,9 @@ export class TComponent extends Component {
     const rdc_abs_y = rdc_rect.top + ( window.scrollX || document.documentElement.scrollLeft)
     const rdc_left = ev.pageX - rdc_abs_x
     const rdc_top = ev.pageY - rdc_abs_y
+    if(this.isDroppingNonControl(rdc_left, rdc_top)) {
+      return
+    }
     let rdc_width, rdc_height, rdc_x2, rdc_y2;
     rdc.style.setProperty('--vir-left', `${rdc_left}px`)
     rdc.style.setProperty('--vir-top', `${rdc_top}px`)
@@ -173,9 +187,11 @@ export class TComponent extends Component {
     window.addEventListener("mousemove", debounceMoveWindow);
     window.addEventListener("mouseup", stopDnD, { once: true });
 
+    const {gridX, gridY} = this.env.designer;
+
     function moveWindow(ev) {
-      left = Math.max(offsetX + ev.pageX, 0);
-      top = Math.max(offsetY + ev.pageY, 0);
+      left = Math.round(Math.max(offsetX + ev.pageX, 0) / gridX) * gridX;
+      top  = Math.round(Math.max(offsetY + ev.pageY, 0) / gridY) * gridY;
       el.style.left = `${left}px`;
       el.style.top = `${top}px`;
     }
