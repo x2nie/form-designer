@@ -1,0 +1,13 @@
+#resizers {
+    position: absolute;
+    overflow: visible !important;
+    inset:0;
+}
+
+.resizer-edge{
+    position: absolute;
+    background-color: red;
+    width: 10px;
+    height: 10px;
+    border-radius: 50%;
+}

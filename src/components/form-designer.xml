@@ -23,7 +23,10 @@
 
     <!-- </TPanel> -->
     <!-- <TButton properties="{Width:100, Height:100, Caption:'HolaBut'}"/> -->
-    <!-- <hr/> -->
+    <!-- <hr/> -->     
+     <t t-if="state.selectedComponent">
+         <Resizer t-portal="'#resizers'" target="state.selectedComponent"/>
+        </t>
 
     <t t-call="FormDesigner.sample-form"/>
 </t>

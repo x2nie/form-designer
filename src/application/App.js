@@ -20,6 +20,7 @@ export default class Application extends Component {
             root: null, //will be a form being designing
             gridX: 10,
             gridY: 10,
+            pickedId: '', //'Button1'
             // pickedComponent: 'TButton'
             // seed: {},
             // findObject: (name) => this.lookupObject(name, this.env.designer.seed),

@@ -20,6 +20,7 @@ class TreeNode extends Component {
     this.state = useState({ open: true });
     this.contentRef = useRef("content");
 
+    this.designer = useState(this.env.designer)
     // onMounted(() => {
     //   this.updateHeight();
     // });
@@ -34,6 +35,11 @@ class TreeNode extends Component {
 
   select(){
       console.log(this.props.node.object)
+      this.designer.pickedId = this.props.node.object;
+  }
+
+  get active() {
+    return this.designer.pickedId === this.props.node.object;
   }
 
   toggle() {
@@ -82,7 +88,7 @@ TreeNode.template = xml`
       </t>
     </span>
 
-    <div class="box" t-on-click="select">
+    <div class="box" t-att-class="{'active': active}" t-on-click="select">
       <b><t t-esc="props.node.object"/></b>
       (<t t-esc="props.node.class"/>)
     </div>
