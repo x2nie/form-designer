@@ -12,6 +12,7 @@
         <div class="window-body has-space0 root-designing-component">
             <t t-raw="0"/>
             <t t-call="TComponent.children"/>
+            <div id="resizers"/>
         </div>
     </t>
 

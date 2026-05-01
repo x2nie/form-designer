@@ -88,7 +88,7 @@ h1 {
   /* background-color: var(--3dcolor); */
   background-image: radial-gradient(gray 1px, transparent 0) !important;
   background-size: 10px 10px;
-  background-position: -1px -1px;
+  background-position: 5px 5px;
 }
 /* @media (prefers-color-scheme: light) {
   :root {

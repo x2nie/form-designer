@@ -45,6 +45,7 @@ export class TComponent extends Component {
   }
 
   onMouseDown(ev) {
+    this.env.designer.pickedId = this.props.object;
     if (this.env.designer.pickedComponent)
       // this.mousePlacingComponent(ev);
       this.startPlacingComponent(ev);

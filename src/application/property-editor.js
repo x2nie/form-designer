@@ -91,6 +91,8 @@ TreeNode.template = xml`
     <div class="box" t-att-class="{'active': active}" t-on-click="select">
       <b><t t-esc="props.node.object"/></b>
       (<t t-esc="props.node.class"/>)
+      @ <t t-esc="props.node.properties.Left"/>
+
     </div>
   </div>
 

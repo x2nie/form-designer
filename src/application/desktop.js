@@ -15,7 +15,7 @@ export class Desktop extends Component {
             <PropertyEditor/>
             <FormDesigner />
             
-            <div id="resizers"/>
+            <!-- <div id="resizers"/> -->
 
             <DesktopCursor />
         </div>
