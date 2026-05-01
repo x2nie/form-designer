@@ -66,6 +66,9 @@ h1 {
 /* TComponent */
 .panel {
   background: var(--3dcolor);
+  /* background: inherit; */
+  background-image: none;
+  
   /* background-image: radial-gradient(gray 1px, transparent 0);
   background-size: 10px 10px;
   background-position: -1px -1px; */
@@ -78,8 +81,11 @@ h1 {
   position: absolute;
   user-select: none;
 }
-.root-designing-component{
-  background-color: var(--3dcolor);
+.root-designing-component::before{
+  content: "";
+  position: absolute;
+  inset: 0;
+  /* background-color: var(--3dcolor); */
   background-image: radial-gradient(gray 1px, transparent 0) !important;
   background-size: 10px 10px;
   background-position: -1px -1px;

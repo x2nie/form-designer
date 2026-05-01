@@ -32,6 +32,10 @@ class TreeNode extends Component {
     // )
   }
 
+  select(){
+      console.log(this.props.node.object)
+  }
+
   toggle() {
     this.state.open = !this.state.open;
     this.updateHeight();
@@ -71,14 +75,14 @@ TreeNode.template = xml`
     </t>
   </div>
 
-  <div class="node-label" t-on-click="toggle">
-    <span class="toggle">
+  <div class="node-label" >
+    <span class="toggle" t-on-click="toggle">
       <t t-if="hasChildren">
         <t t-esc="state.open ? '⊟' : '⊞'"/>
       </t>
     </span>
 
-    <div class="box">
+    <div class="box" t-on-click="select">
       <b><t t-esc="props.node.object"/></b>
       (<t t-esc="props.node.class"/>)
     </div>
