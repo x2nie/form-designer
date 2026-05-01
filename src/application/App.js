@@ -1,4 +1,4 @@
-import { Component, loadFile, onWillStart, useChildSubEnv, useState, useSubEnv, xml } from "@odoo/owl";
+import { Component, loadFile, onWillStart, reactive, useChildSubEnv, useState, useSubEnv, xml } from "@odoo/owl";
 
 import './style.css'
 // import '98.css/dist/98.css'
@@ -16,7 +16,7 @@ import { Desktop } from "./desktop";
 export default class Application extends Component {
     static components = {Cockpit, Desktop}
     setup(){
-        const designer = useState({
+        const designer = reactive({
             root: null, //will be a form being designing
             gridX: 10,
             gridY: 10,

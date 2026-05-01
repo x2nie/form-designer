@@ -16,7 +16,7 @@ export class Cockpit extends Component {
     generateTree(){
         const js = component2json(this.state.root)
         // console.log(js);
-        console.log(JSON.stringify(js));
+        console.log(JSON.stringify(js, null, 2));
         // console.log(JSON.parse(JSON.stringify(js)) )
         // debugger
     }

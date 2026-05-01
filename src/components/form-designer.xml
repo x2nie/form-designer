@@ -31,9 +31,9 @@
 <t t-name="FormDesigner.sample-form">
     
 
-    <div class="no-designer window active" style="max-width: 400px; left:400px">
+    <div class="no-designer window active" style="max-width: 400px; left:400px; top:300px;">
         <div class="title-bar">
-            <div class="title-bar-text">Another window with contents</div>
+            <div class="title-bar-text">Dummy window with contents</div>
             <div class="title-bar-controls">
                 <button aria-label="Minimize"></button>
                 <button aria-label="Maximize"></button>

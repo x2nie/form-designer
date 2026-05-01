@@ -19,13 +19,14 @@
             },
             "children": [
                 {
-                    "object": "unknown1","class":"TUnknownPanel", 
+                    "object": "btnChild","class":"TButton", 
                     "properties": {
                         "UnknownProp1": "Custom Data",
+                        "Caption": "Child Button",
                         "Left": 10,
                         "Top": 40,
                         "Width": 100,
-                        "Height": 230
+                        "Height": 23
                     },
                     "children": []
                 }

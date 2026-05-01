@@ -1,4 +1,4 @@
-import { Component, useEnv, useRef, useState, onMounted, xml } from "@odoo/owl";
+import { Component, useEnv, useRef, useState, onMounted, reactive, xml, useEffect } from "@odoo/owl";
 import { component2json } from "./utils";
 import './property-editor.scss'
 
@@ -20,9 +20,16 @@ class TreeNode extends Component {
     this.state = useState({ open: true });
     this.contentRef = useRef("content");
 
-    onMounted(() => {
-      this.updateHeight();
-    });
+    // onMounted(() => {
+    //   this.updateHeight();
+    // });
+
+    // useEffect(
+    //     () => {
+    //         this.updateHeight()
+    //     },
+    //     () => [this.props.node.children]
+    // )
   }
 
   toggle() {
@@ -35,11 +42,16 @@ class TreeNode extends Component {
     if (!el) return;
 
     if (this.state.open) {
+        
       el.style.height = el.scrollHeight + "px";
       el.style.opacity = 1;
+      setTimeout(() => {el.style.height = '';}, 500);
     } else {
-      el.style.height = "0px";
-      el.style.opacity = 0;
+      el.style.height = el.scrollHeight + "px";
+      setTimeout(() => {
+          el.style.height = "0px";
+          el.style.opacity = 0;        
+      }, 50);
     }
   }
 
@@ -93,18 +105,22 @@ export default class PropertyEditor extends Component {
     static components = {TreeNode};
     // static template = 'ComponentPalette'
     setup(){
-        // this.env = useEnv()
+        this.env = useEnv()
         // this.state = useState(this.env.designer)
         // this.state = reactive(this.env.designer)
         // this.state = this.env.designer
         // this.env = useEnv()
-        this.state = useState(this.env.designer)
+        // this.state = useState({ root: this.env.designer.root }) // !error
+        // this.state = useState(reactive(this.env.designer))
+        // this.state = reactive(useState(this.env.designer))
+        this.state = useState(this.env.designer);
         // this.state.shown_component
         this.root = useRef('root');
+        // console.log(this.data)
     }
     get data(){
-        console.log(component2json(this.state.root))
-        return component2json(this.state.root)
+        return this.state.seed
+        // return component2json(this.state.root)
     }
 
     // generateTree(){
@@ -134,9 +150,9 @@ export default class PropertyEditor extends Component {
 }
 
 PropertyEditor.template = xml`
-<div class="property-editor-dlg no-designer window active" style="max-width: 400px; left:400px">
+<div class="property-editor-dlg no-designer window active" style="max-width: 400px; left:500px">
     <div class="title-bar">
-        <div class="title-bar-text">Another window with contents</div>
+        <div class="title-bar-text">Property Editor</div>
         <div class="title-bar-controls">
             <button aria-label="Minimize"></button>
             <button aria-label="Maximize"></button>

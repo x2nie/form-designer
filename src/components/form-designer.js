@@ -7,10 +7,10 @@ export class FormDesigner extends Component {
     static template = 'FormDesigner'
     static components = registeredComponents;
     setup(){
-      onWillStart(async ()=>{
-        const res = await loadFile('/samples/form1.json')
-        this.seed = JSON.parse(res)
-      })
+      // onWillStart(async ()=>{
+      //   const res = await loadFile('/samples/form1.json')
+      //   this.seed = JSON.parse(res)
+      // })
     }
 
     getComponent(name) {
