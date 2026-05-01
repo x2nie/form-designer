@@ -1,4 +1,4 @@
-import { Component, useRef, useState, xml } from "@odoo/owl";
+import { Component, useEffect, useState, xml } from "@odoo/owl";
 import './resizer.scss'
 
 class Edge extends Component {
@@ -14,11 +14,36 @@ class Edge extends Component {
 export class Resizer extends Component {
     static components = { Edge }
     setup(){
-        this.target = this.props.target
+        const getTargetStats = (properties) => {
+            // console.log(properties)
+            return {
+                l: Number(properties.Left ?? properties.left ?? 0),
+                t: Number(properties.Top ?? properties.top ?? 0),
+                w: Number(properties.Width ?? properties.width ?? 100),
+                h: Number(properties.Height ?? properties.height ?? 50),
+            };
+        };
+
+        this.target = this.props.target;
+        // console.log(this.target)
         this.state = useState({
-            l:0,t:0,w:100,h:50
-        })
-        // const 
+            coor: getTargetStats(this.target.properties)
+        });
+
+        useEffect(
+            (properties) => {
+                console.log('changed', properties)
+                this.state.coor = getTargetStats(properties);
+            },
+            () => {
+                const properties = this.props.target?.properties || {};
+                return [properties]
+            }
+        );
+    }
+
+    get state0(){
+        return this.state.coor
     }
 
     getCssClass(){
@@ -30,8 +55,8 @@ export class Resizer extends Component {
 }
 
 Resizer.template = xml`
-    <Edge x="state.l" y="state.t"/>
-    <Edge x="state.l + state.w" y="state.t"/>
-    <Edge x="state.l + state.w" y="state.t + state.h"/>
-    <Edge x="state.l" y="state.t + state.h"/>
+    <Edge x="state.coor.l" y="state.coor.t"/>
+    <Edge x="state.coor.l + state.coor.w" y="state.coor.t"/>
+    <Edge x="state.coor.l + state.coor.w" y="state.coor.t + state.coor.h"/>
+    <Edge x="state.coor.l" y="state.coor.t + state.coor.h"/>
 `
