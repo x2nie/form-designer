@@ -17,6 +17,7 @@
    .tree-node {
   position: relative;
   margin-left: 20px;
+  box-shadow: inset 0 0 4px blue;
 }
 
 .lines {
@@ -189,6 +190,19 @@ class App extends Component {
           "class":"TButton",
           "properties":{"Caption":"Cancel","Left":150,"Top":10,"Width":100,"Height":23},
           "children":[]
+        },
+        {
+          "object":"pnl3",
+          "class":"TPanel",
+          "properties":{"Caption":"Sub Panel","Left":10,"Top":40,"Width":100,"Height":230},
+          "children":[
+            {
+              "object":"unknown2",
+              "class":"UnknownTComponent",
+              "properties":{"UnknownProp1":"Custom Data","Left":10,"Top":40,"Width":100,"Height":230},
+              "children":[]
+            }
+          ]
         },
         {
           "object":"customerdata",
