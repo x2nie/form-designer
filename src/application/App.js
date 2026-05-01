@@ -33,18 +33,6 @@ export default class Application extends Component {
         })
         useSubEnv({designer})
     }
-
-    lookupObject(name, rootObject){
-        if(rootObject.object == name)
-            return rootObject;
-        for(const child of rootObject.children){
-            // if(child.object == name)
-            //     return child;
-            let result = this.lookupObject(name, child)
-            if(result) return result
-        }
-    }
-    
 }
 Application.template = xml`
     <Cockpit />
