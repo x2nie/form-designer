@@ -1,9 +1,9 @@
 import { Component, reactive, useEnv, useState, xml } from "@odoo/owl";
 import ComponentPalette from "./component-palette";
-import PropertyEditor from "./property-editor";
+import { component2json } from "./utils";
 
 export class Cockpit extends Component {
-    static components = { ComponentPalette, PropertyEditor }
+    static components = { ComponentPalette }
     setup(){
         // this.env = useEnv()
         // this.state = useState(this.env.designer)
@@ -42,23 +42,7 @@ Cockpit.template = xml`
     <button t-on-click="switchComponent" data-component="TButton" t-att-class="{active: state.pickedComponent=='TButton'}">TButton </button>
     <button t-on-click="switchComponent" data-component="TPanel" t-att-class="{active: state.pickedComponent=='TPanel'}">TPanel </button>
     --> 
-    <PropertyEditor/>
+    
 </div>
   
 `;
-
-function component2json(component){
-    if(!component) return null;
-
-    const obj = {
-        object: component.name, 
-        class: component.constructor.name,
-        properties: component.properties,
-        children: []
-    }
-    for (const [key, compNode] of Object.entries(component.__owl__.children)) {
-        obj.children.push(component2json(compNode.component))
-    }
-
-    return obj
-}
