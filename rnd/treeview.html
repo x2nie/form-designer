@@ -1,0 +1,181 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="UTF-8">
+  <title>OWL Tree View</title>
+
+  <!-- OWL v2 CDN -->
+  <script src="https://unpkg.com/@odoo/owl@2.3.0/dist/owl.iife.js"></script>
+
+  <style>
+    body {
+      font-family: monospace;
+      padding: 20px;
+      background: #f5f5f5;
+    }
+
+    .tree-node {
+      margin-left: 20px;
+      position: relative;
+    }
+
+    .node-label {
+      cursor: pointer;
+      user-select: none;
+      display: flex;
+      align-items: center;
+      gap: 6px;
+    }
+
+    .toggle {
+      width: 16px;
+      display: inline-block;
+      text-align: center;
+      font-weight: bold;
+      cursor: pointer;
+    }
+
+    .content {
+      overflow: hidden;
+      transition: all 0.3s ease;
+    }
+
+    .collapsed {
+      height: 0 !important;
+      opacity: 0;
+    }
+
+    .expanded {
+      opacity: 1;
+    }
+
+    .box {
+      padding: 2px 6px;
+      background: white;
+      border: 1px solid #ddd;
+      border-radius: 4px;
+      display: inline-block;
+    }
+
+  </style>
+</head>
+<body>
+
+<div id="app"></div>
+
+<script>
+const { Component, mount, useState, xml } = owl;
+
+/* ======================
+   TREE NODE COMPONENT
+====================== */
+class TreeNode extends Component {
+    static props = ["node"];
+    
+  setup() {
+    this.state = useState({
+      open: true
+    });
+  }
+
+  toggle() {
+    this.state.open = !this.state.open;
+  }
+
+  get hasChildren() {
+    return this.props.node.children && this.props.node.children.length > 0;
+  }
+}
+TreeNode.components = {TreeNode};
+
+TreeNode.template = xml`
+<div class="tree-node">
+  <div class="node-label" t-on-click="toggle">
+    <span class="toggle">
+      <t t-if="hasChildren">
+        <t t-esc="state.open ? '⊟' : '⊞'"/>
+      </t>
+    </span>
+
+    <div class="box">
+      <b><t t-esc="props.node.object"/></b>
+      (<t t-esc="props.node.class"/>)
+    </div>
+  </div>
+
+  <div class="content"
+       t-att-class="state.open ? 'expanded' : 'collapsed'"
+       t-att-style="state.open ? '' : 'height:0px'">
+
+    <t t-if="hasChildren">
+      <t t-foreach="props.node.children" t-as="child" t-key="child.object">
+        <TreeNode node="child" t-key="child.object"/>
+      </t>
+    </t>
+
+  </div>
+</div>
+`;
+
+/* ======================
+   ROOT APP
+====================== */
+class App extends Component {
+  setup() {
+    this.data = {
+      "object":"Form1",
+      "class":"TForm",
+      "properties":{"Caption":"Form 1","Left":10,"Top":10,"Width":400,"Height":325},
+      "children":[
+        {
+          "object":"pnl2",
+          "class":"TPanel",
+          "properties":{"Caption":"Sub Panel","Left":10,"Top":40,"Width":100,"Height":230},
+          "children":[
+            {
+              "object":"unknown1",
+              "class":"UnknownTComponent",
+              "properties":{"UnknownProp1":"Custom Data","Left":10,"Top":40,"Width":100,"Height":230},
+              "children":[]
+            }
+          ]
+        },
+        {
+          "object":"btnOK",
+          "class":"TButton",
+          "properties":{"Caption":"OK","Left":10,"Top":10,"Width":100,"Height":23},
+          "children":[]
+        },
+        {
+          "object":"btnCancel",
+          "class":"TButton",
+          "properties":{"Caption":"Cancel","Left":150,"Top":10,"Width":100,"Height":23},
+          "children":[]
+        },
+        {
+          "object":"customerdata",
+          "class":"UnknownTComponent",
+          "properties":{"UnknownProp1":"Custom Data","Left":150,"Top":40,"Width":100,"Height":230},
+          "children":[]
+        }
+      ]
+    };
+  }
+}
+
+App.components = { TreeNode };
+
+App.template = xml`
+<div>
+  <TreeNode node="data"/>
+</div>
+`;
+
+/* ======================
+   MOUNT
+====================== */
+mount(App, document.getElementById("app"), {debug:true});
+</script>
+
+</body>
+</html>
