@@ -14,5 +14,56 @@
     pointer-events: all;
     margin-left: -5px;
     margin-top: -5px;
-    box-shadow: 2px 2px 4px rgba(0, 0, 0, 0.5);
+    --shadow-x: 2px;
+    box-shadow: var(--shadow-x) 2px 4px rgba(0, 0, 0, 0.5);
+    // filter: drop-shadow(2px, 2px, 4px rgba(0, 0, 0, 0.5));
+    // warna utama
+  --c: #3498db;
+
+  // default: 1 quadrant kosong (90deg)
+  // trik: kita rotate "lubang" lewat start angle
+  background: conic-gradient(
+    var(--c) 0deg calc(var(--start) - 90deg),
+    transparent calc(var(--start) - 90deg) var(--start),
+    var(--c) var(--start) 360deg
+  );
+
+  /* ===== CORNERS ===== */
+
+  &.lt {
+    top: 0;
+    left: 0;
+    cursor: nwse-resize;
+
+    // kosong di arah kiri-atas
+    --start: 180deg;
+    --shadow-x: -2px;
+  }
+
+  &.rt {
+    top: 0;
+    right: 0;
+    cursor: nesw-resize;
+
+    // kosong di kanan-atas
+    --start: 270deg;
+  }
+
+  &.rb {
+    bottom: 0;
+    right: 0;
+    cursor: nwse-resize;
+
+    // kosong di kanan-bawah
+    --start: 360deg;
+  }
+
+  &.lb {
+    bottom: 0;
+    left: 0;
+    cursor: nesw-resize;
+
+    // kosong di kiri-bawah
+    --start: 90deg;
+  }
 }

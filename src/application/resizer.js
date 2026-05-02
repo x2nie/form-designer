@@ -3,7 +3,7 @@ import './resizer.scss'
 
 class Edge extends Component {
     static template = xml`
-        <div class="resizer-edge" 
+        <div t-attf-class="resizer-edge #{props.kind}" 
             t-attf-style="left: #{props.x}px; top: #{props.y}px;"/>`;
 
 }
@@ -55,8 +55,8 @@ export class Resizer extends Component {
 }
 
 Resizer.template = xml`
-    <Edge x="state.coor.l" y="state.coor.t"/>
-    <Edge x="state.coor.l + state.coor.w" y="state.coor.t"/>
-    <Edge x="state.coor.l + state.coor.w" y="state.coor.t + state.coor.h"/>
-    <Edge x="state.coor.l" y="state.coor.t + state.coor.h"/>
+    <Edge kind="'lt'" x="state.coor.l" y="state.coor.t"/>
+    <Edge kind="'rt'" x="state.coor.l + state.coor.w" y="state.coor.t"/>
+    <Edge kind="'rb'" x="state.coor.l + state.coor.w" y="state.coor.t + state.coor.h"/>
+    <Edge kind="'lb'" x="state.coor.l" y="state.coor.t + state.coor.h"/>
 `
