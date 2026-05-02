@@ -42,9 +42,9 @@ export class Resizer extends Component {
         );
     }
 
-    get state0(){
-        return this.state.coor
-    }
+    // get state0(){
+    //     return this.state.coor
+    // }
 
     getCssClass(){
         return {...super.getCssClass(), 

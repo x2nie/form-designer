@@ -12,6 +12,7 @@ const ITEMS = [
    TREE NODE COMPONENT
 ====================== */
 
+// inpiration: https://www.jqueryscript.net/other/collapsible-tree-bootstrap.html
 class TreeNode extends Component {
   static components = { TreeNode };
   static props = ["node", "level", "isLast"];

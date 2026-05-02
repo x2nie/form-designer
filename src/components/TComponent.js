@@ -80,7 +80,7 @@ export class TComponent extends Component {
       children: []
     })
     this.env.designer.pickedComponent = null;
-  }
+  }                    
 
   isDroppingNonControl(x,y){
     // this function is used to reject startPlacingComponent, because can not set width/height on non tcontrol
