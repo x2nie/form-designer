@@ -25,7 +25,7 @@
     <!-- <TButton properties="{Width:100, Height:100, Caption:'HolaBut'}"/> -->
     <!-- <hr/> -->     
      <t t-if="state.selectedComponent">
-         <Resizer t-portal="'#resizers'" target="state.selectedComponent"/>
+         <Resizer t-portal="'#resizers'" target="state.selectedComponent" id="state.designer.pickedId"/>
         </t>
 
     <t t-call="FormDesigner.sample-form"/>

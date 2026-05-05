@@ -2,6 +2,7 @@
 
     <!-- t-att-class="{panel:false, 'root-designing-component':props.designerroot}"   -->
     <t t-name="TComponent" t-tag="constructor.tag"
+        t-att-id="props.object"
         t-att-class="getCssClass()"
         t-att-style="getStyle() +''"
         t-on-mousedown.stop="onMouseDown"

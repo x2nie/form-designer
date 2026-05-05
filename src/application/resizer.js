@@ -4,7 +4,7 @@ import './resizer.scss'
 class Edge extends Component {
     static template = xml`
         <div t-attf-class="resizer-edge #{props.kind}" 
-            t-attf-style="left: #{props.x}px; top: #{props.y}px;"/>`;
+            t-attf-style="left: #{props.x}px; top: #{props.y}px; transform: translate(#{props.jump.l}px, #{props.jump.t}px);"/>`;
 
 }
 
@@ -27,19 +27,34 @@ export class Resizer extends Component {
         this.target = this.props.target;
         // console.log(this.target)
         this.state = useState({
-            coor: getTargetStats(this.target.properties)
+            coor: getTargetStats(this.target.properties),
+            jump: {l:0, t:0}
         });
 
         useEffect(
             (properties) => {
                 console.log('changed', properties)
                 this.state.coor = getTargetStats(properties);
+                this.state.jump = this.client2Form(this.props.target)
             },
             () => {
                 const properties = this.props.target?.properties || {};
                 return [properties]
             }
         );
+    }
+
+    client2Form(target){
+        let l = 0, t = 0;
+        if(target){
+            let c = document.getElementById(target.object).parentElement
+            while(!c.classList.contains('root-designing-component')){
+                l += c.offsetLeft
+                t += c.offsetTop
+                c = c.parentElement
+            }
+        }
+        return { l, t }
     }
 
     // get state0(){
@@ -55,8 +70,8 @@ export class Resizer extends Component {
 }
 
 Resizer.template = xml`
-    <Edge kind="'lt'" x="state.coor.l" y="state.coor.t"/>
-    <Edge kind="'rt'" x="state.coor.l + state.coor.w" y="state.coor.t"/>
-    <Edge kind="'rb'" x="state.coor.l + state.coor.w" y="state.coor.t + state.coor.h"/>
-    <Edge kind="'lb'" x="state.coor.l" y="state.coor.t + state.coor.h"/>
+    <Edge kind="'lt'" jump="state.jump" x="state.coor.l" y="state.coor.t"/>
+    <Edge kind="'rt'" jump="state.jump" x="state.coor.l + state.coor.w" y="state.coor.t"/>
+    <Edge kind="'rb'" jump="state.jump" x="state.coor.l + state.coor.w" y="state.coor.t + state.coor.h"/>
+    <Edge kind="'lb'" jump="state.jump" x="state.coor.l" y="state.coor.t + state.coor.h"/>
 `
