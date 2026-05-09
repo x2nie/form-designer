@@ -34,7 +34,7 @@ export class Resizer extends Component {
         useEffect(
             (properties) => {
                 console.log('changed', properties)
-                this.state.coor = getTargetStats(properties);
+                // this.props.target.properties = getTargetStats(properties);
                 this.state.jump = this.client2Form(this.props.target)
             },
             () => {
@@ -57,10 +57,6 @@ export class Resizer extends Component {
         return { l, t }
     }
 
-    // get state0(){
-    //     return this.state.coor
-    // }
-
     getCssClass(){
         return {...super.getCssClass(), 
             'root-designing-component': false,
@@ -70,8 +66,8 @@ export class Resizer extends Component {
 }
 
 Resizer.template = xml`
-    <Edge kind="'lt'" jump="state.jump" x="state.coor.l" y="state.coor.t"/>
-    <Edge kind="'rt'" jump="state.jump" x="state.coor.l + state.coor.w" y="state.coor.t"/>
-    <Edge kind="'rb'" jump="state.jump" x="state.coor.l + state.coor.w" y="state.coor.t + state.coor.h"/>
-    <Edge kind="'lb'" jump="state.jump" x="state.coor.l" y="state.coor.t + state.coor.h"/>
+    <Edge kind="'lt'" jump="state.jump" x="props.target.properties.Left" y="props.target.properties.Top"/>
+    <Edge kind="'rt'" jump="state.jump" x="props.target.properties.Left + props.target.properties.Width" y="props.target.properties.Top"/>
+    <Edge kind="'rb'" jump="state.jump" x="props.target.properties.Left + props.target.properties.Width" y="props.target.properties.Top + props.target.properties.Height"/>
+    <Edge kind="'lb'" jump="state.jump" x="props.target.properties.Left" y="props.target.properties.Top + props.target.properties.Height"/>
 `
