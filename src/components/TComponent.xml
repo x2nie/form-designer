@@ -2,7 +2,7 @@
 
     <!-- t-att-class="{panel:false, 'root-designing-component':props.designerroot}"   -->
     <t t-name="TComponent" t-tag="constructor.tag"
-        t-att-id="props.object"
+        t-att-id="props.node.object"
         t-att-class="getCssClass()"
         t-att-style="getStyle() +''"
         t-on-mousedown.stop="onMouseDown"
@@ -16,8 +16,8 @@
     </t>
 
     <t t-name="TComponent.children" >
-        <t t-foreach="props.children or []" t-as="child" t-key="child.object">
-            <t t-component="getComponent(child.class)" t-props="child"/>
+        <t t-foreach="props.node.children or []" t-as="child" t-key="child.object">
+            <t t-component="getComponent(child.class)" node="child"/>
         </t>
     </t>
 

@@ -52,11 +52,11 @@ export default class TButton extends TControl {
 
 // TButton.template = "TComponent.Iconic"
 TButton.template = "TButton"
-TButton.template0 = xml`
-    <button t-ref="root" 
-        t-on-mousedown.stop="onMouseDown" t-att-style="getStyle()"
-        ><t t-esc="properties.Caption"/></button>
-        <!-- t-attf-style="left: #{att.left}px; top:#{att.top}px" -->
-        `
+// TButton.template0 = xml`
+//     <button t-ref="root" 
+//         t-on-mousedown.stop="onMouseDown" t-att-style="getStyle()"
+//         ><t t-esc="properties.Caption"/></button>
+//         <!-- t-attf-style="left: #{att.left}px; top:#{att.top}px" -->
+//         `
 
 registerComponent(TButton)

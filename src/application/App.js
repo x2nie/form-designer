@@ -22,17 +22,17 @@ export default class Application extends Component {
             gridY: 10,
             pickedId: '', //'Button1'
             // pickedComponent: 'TButton'
-            // seed: {},
+            seed: {},
             // findObject: (name) => this.lookupObject(name, this.env.designer.seed),
             // // pickedComponent: null
             // pickedComponent: 'TPanel'
         })
-        // useChildSubEnv({designer})
+        useChildSubEnv({designer})
         onWillStart(async ()=>{
             const res = await loadFile('/samples/form1.json')
             designer.seed = JSON.parse(res)
         })
-        useSubEnv({designer})
+        // useSubEnv({designer})
     }
 }
 Application.template = xml`

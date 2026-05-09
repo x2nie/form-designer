@@ -13,8 +13,8 @@ export class TComponent extends Component {
   static components = registeredComponents
   static tag = 'div'
   setup() {
-    this.properties = useState({ ...this.props.properties })
-    this.name = this.props.object;
+    // this.properties = useState({ ...this.props.properties })
+    this.name = this.props.node.object;
     // debugger
     // convert props to state, we don't need props which is a seed.
     // Object.entries(this.props.properties || {}).forEach(([key, value]) => {
@@ -26,6 +26,11 @@ export class TComponent extends Component {
       this.env.designer.root = this;
     }
   }
+  
+  get properties(){
+    return this.props.node.properties;
+  }
+
   getComponent(name) {
     return registeredComponents[name] || UnknownTComponent
   }
@@ -45,7 +50,7 @@ export class TComponent extends Component {
   }
 
   onMouseDown(ev) {
-    this.env.designer.pickedId = this.props.object;
+    this.env.designer.pickedId = this.props.node.object;
     if (this.env.designer.pickedComponent)
       // this.mousePlacingComponent(ev);
       this.startPlacingComponent(ev);
@@ -69,7 +74,7 @@ export class TComponent extends Component {
   placingComponent(pos, container=null) {
     container = container || (this instanceof TWinControl ? this : this.__owl__.parent.component);
     // const node = this.env.designer.findObject(container.name)
-    container.props.children.push({
+    container.props.node.children.push({
       // node.children.push({
       class: this.env.designer.pickedComponent, object: `random${guid++}`,
       properties: { 

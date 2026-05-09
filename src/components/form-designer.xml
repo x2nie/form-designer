@@ -1,6 +1,6 @@
 <templates>
     <t t-name="render-component">
-        <t t-component="getComponent(comp.class)" t-props="comp">
+        <t t-component="getComponent(comp.class)" node="comp">
             <!-- <t t-foreach="comp.children" t-as="child" t-key="child.object">
                 <t t-call="render-component">
                     <t t-set="comp" t-value="child"/>
@@ -16,7 +16,7 @@
         <t t-set="comp" t-value="seed"/>
     </t> -->
     <!-- <t t-component="getComponent(state.seed.class)" t-props="state.seed" designerroot="1"></t> -->
-    <t t-component="getComponent(env.designer.seed.class)" t-props="env.designer.seed" designerroot="1"></t>
+    <t t-component="getComponent(state.designer.seed.class)" node="state.designer.seed" designerroot="1"></t>
      <!-- <pre t-out="window.JSON.stringify(seed)"/> -->
     <!-- <hr/> -->
     <!-- <TPanel> -->
@@ -28,7 +28,7 @@
          <Resizer t-portal="'#resizers'" target="state.selectedComponent" id="state.designer.pickedId"/>
         </t>
 
-    <t t-call="FormDesigner.sample-form"/>
+    <!-- <t t-call="FormDesigner.sample-form"/> -->
 </t>
 
 <t t-name="FormDesigner.sample-form">
