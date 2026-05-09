@@ -48,7 +48,7 @@ export class Resizer extends Component {
         let l = 0, t = 0;
         if(target){
             let c = document.getElementById(target.object).parentElement
-            while(!c.classList.contains('root-designing-component')){
+            while(c && !c.classList.contains('root-designing-component')){
                 l += c.offsetLeft
                 t += c.offsetTop
                 c = c.parentElement
